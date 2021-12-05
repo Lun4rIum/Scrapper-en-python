@@ -181,4 +181,4 @@ ls = ls / nbrMoyenne
 print(ls)
 driver.quit()
 ```
-
+Merci à BiMathAx pour l'ajout d'informations !
