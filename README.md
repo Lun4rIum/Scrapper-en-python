@@ -31,7 +31,7 @@ Tout d'abord, il faut analyser le site, pour acceder à cette fameuse page conte
 
 nous allons indiquer à selenium sur quelle page il doit se rendre (en l'occurence https://www.ecoledirecte.com/Eleves/0001/Notes) :
 ```
-driver.get("https://www.ecoledirecte.com/Eleves/0001/CahierDeTexte")
+driver.get("https://www.ecoledirecte.com/Eleves/0001/Notes")
 ```
 ensuite, nous allons chercher le xpath des éléments input qui nous intéressent ( langage d'interrogation simple d'emploi, selon wikipédia)
 pour récuperer ce fameux xpath, il suffit d'aller sur le site qui nous intéresse, faire clique droit inspecter l'élément sur l'input qui nous intéresse, et dans le code source, clique droit -> copy -> full xpath (sinon voir image en dessous).
