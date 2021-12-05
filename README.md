@@ -68,8 +68,56 @@ Nous sommes maintenant sur la fameuse page de notes. C'est maintenant que ça de
  
 comme nous pouvons le voir, la balise <span> n'a pas d'ID ou de classe. Mais la balise <td> a la classe "relevemoyenne", parfait, pourquoi ? Car toutes les autres ont aussi la balise, ce qui va nous permettre de tout récupérer d'un coup en utilisant la commande
 ```
-moyennes = driver.find_elements_by_class_name("relevemoyenne").text
+moyennes = driver.find_elements_by_class_name("relevemoyenne")
 ```
-comme vous le voyez, elements prend un S, cela dit à selenium de lister tous les éléments possédant la même classe, et le .text nous permet de relever tout le texte qui se trouve dans la balise <td> qui contient la classe "relevemoyenne".
+comme vous le voyez, elements prend un S, cela dit à selenium de lister tous les éléments possédant la même classe, mais si vous faites ``` print(moyennes)``` vous verrez que cela n'affiche que du texte incompréhensible. C'est normal, selenium à récuperer les éléments mais pas le texte, pour récuperer celui-ci, nous allons faire :
+```
+for elem in moyennes:
+    print(elem.text)
+```
+soit pour tous les éléments dans moyennes, écrire : le texte contenu dans ces éléments. Et là si vous faites un print(), magie ! Ca fonctionne. Mais ne criez pas victoire trop vite ce n'est pas fini. Nous voulons calculer la moyenne général. Et pour cela, nous allons supprimer l'élément 0 de notre liste de moyennes, pourquoi ? Car il avait aussi la classe "relevemoyenne" mais c'est le texte Moyenne au dessus des vrais moyennes. Voila comment nous allons faire :
+  
+```
+ls = []
+for elem in moyennes:
+  ls.append(elem.text.replace(",","."))
+```
+Là, je remplace les , de mes moyennes par des . sinon python ne comprend pas que ce sont des nombres, puis je les ajoutes à la liste ls[] que j'ai crée juste avant
+```
+del ls[0]
+del ls[-1]
+```
+Je supprime l'élément 0 qui est "MOYENNES" et l'élément -1 (dernier élément de la liste) qui est vide car je suis dispensé de sport et je n'ai donc aucune moyenne
+```
+ls = [ float(x) for x in ls ]
+``` 
+je convertis mes valeurs en "float" (nombre décimaux)
+  
+```
+nbrMoyenne = len(ls)
+ls = sum(ls)
+ls = ls / nbrMoyenne
+print(ls)
+driver.quit()
+```
+- Je définis le nombre de moyennes dans ma liste avec nbrMoyenne
+- J'additionne tous les éléments de ma liste
+- Je divise la somme de l'adition par le nombre de moyennes
+- J'écris le résultat dans ma console
+- Et enfin, je quitte Firefox.
+  
+ Et voilà ! j'ai ma moyenne général. Alors oui, il y'a un inconvéniant à cette méthode, c'est le temps. En effet, vu que Selenium simule un navigateur, il prend énormement de temps à charger les pages, c'est pour ça que parfois vous aurez l'erreur "Unable to locate element:". Pour y remédier importer le module time et faites des pauses entre chaque page que vous charger, ce qui donnerait ça :
+  
+```
+import time
+  
+//PAGE
+time.sleep(2)
+//AUTRE PAGE
+time.sleep(2)
+```
+  
+Voilà ! J'espère que ce tuto vous aura été utile.
 
 
+    
