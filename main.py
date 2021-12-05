@@ -32,3 +32,4 @@ nbrMoyenne = len(ls)
 ls = sum(ls)
 ls = ls / nbrMoyenne
 print(ls)
+driver.quit()
