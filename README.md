@@ -62,4 +62,14 @@ login = driver.find_element_by_xpath('/html/body/div[2]/div[1]/div/div/div[1]/di
 ```
 et oui, pour cliquer on doit juste rajouter le .click() à la fin de notre variable, fastoche non ?
 Dans notre exemple, vu que nous avons demandé la page "https://www.ecoledirecte.com/Eleves/0001/Notes", le site va nous rediriger automatiquement sur l'onglet note, sinon vous pouvez utiliser le .click() et le xpath pour trouver la page dans un menu.
-Nous sommes maintenant sur la fameuse page de notes. C'est maintenant que ça devient intéressant. En analysant le code source, nous pouvons voir que les moyennes sont contenus dans des balises <span>, sous forme de texte. Nous allons donc 
+Nous sommes maintenant sur la fameuse page de notes. C'est maintenant que ça devient intéressant. En analysant le code source, nous pouvons voir que les moyennes sont contenus dans des balises <span>, sous forme de texte. Voilà le code source
+  
+![alt text]( https://github.com/Lun4rIum/Scrapper-en-python/blob/main/images/Capture%20d’écran%202021-12-05%20153723.png?raw=true)
+ 
+comme nous pouvons le voir, la balise <span> n'a pas d'ID ou de classe. Mais la balise <td> a la classe "relevemoyenne", parfait, pourquoi ? Car toutes les autres ont aussi la balise, ce qui va nous permettre de tout récupérer d'un coup en utilisant la commande
+```
+moyennes = driver.find_elements_by_class_name("relevemoyenne").text
+```
+comme vous le voyez, elements prend un S, cela dit à selenium de lister tous les éléments possédant la même classe, et le .text nous permet de relever tout le texte qui se trouve dans la balise <td> qui contient la classe "relevemoyenne".
+
+
