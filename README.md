@@ -22,4 +22,5 @@ nous allons maintenant définir la variable driver, qui nous permettra de démar
 driver = webdriver.Firefox(executable_path=path)
 ```
 la variable "executable_path" indique à selenium que notre geckodriver se trouve à la variable "path", qui souvenez vous, contient notre chemin d'accès.
-Nous pouvons maintenant aller sur notre site, pour ma part, je vais prendre ecoledirecte, qui est un site qui répértorie les notes, devoirs, et agenda des élèves (ce site est mis en place par les établissement scolaire), mon objectif va être de calculer ma moyenne, car celle-ci n'est pas affiché sur le site. néanmoins nous avons les notes de chaque matière, 
+Nous pouvons maintenant aller sur notre site, pour ma part, je vais prendre ecoledirecte, qui est un site qui répértorie les notes, devoirs, et agenda des élèves (ce site est mis en place par les établissement scolaire), mon objectif va être de calculer ma moyenne, car celle-ci n'est pas affiché sur le site. néanmoins nous avons les notes de chaque matière, (voir image ci-dessous)
+![alt text](https://github.com/Lun4rIum/Scrapper-en-python/blob/main/images/Capture%20d’écran%202021-12-05%20151419.png?raw=true)
